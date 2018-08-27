@@ -2,10 +2,7 @@ package main
 
 import (
 	"os"
-
-	"github.com/cosmos/cosmos-sdk/client"
-	"github.com/cosmos/cosmos-sdk/version"
-	ibccmd "github.com/cosmos/cosmos-sdk/x/ibc/client/cli"
+	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 	"github.com/tendermint/tendermint/libs/cli"
 )
@@ -34,9 +31,6 @@ func initTestCommand() *cobra.Command {
 func main() {
 	// disable sorting
 	cobra.EnableCommandSorting = false
-
-	// get the codec
-	cdc := app.MakeCodec()
 
 	// add proxy, version and key info
 	rootCmd.AddCommand(
