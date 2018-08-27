@@ -9,19 +9,22 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/tendermint/tendermint/libs/cli"
 	tm "github.com/tendermint/tendermint/types"
+	"github.com/tendermint/tendermint/libs/log"
 )
 
 func todoTest(_ *cobra.Command, _ []string) error {
 	
+	logger := log.NewTMLogger(log.NewSyncWriter(os.Stdout))
+	
 	//
 	registerGenesis := "/root/myspace/src/github.com/kingblockio/lcv/kinglcv/genesis.json"
-	
 	
 	//
 	genesisBytes, err := ioutil.ReadFile(registerGenesis)
 	if err != nil {
 		return errors.Errorf("Error reading genesis file %v: %v\n", registerGenesis, err)
 	}
+	logger.Info("Genesis  : ", "string", genesisBytes)
 	
 	//
 	chainGenDoc := new(tm.GenesisDoc)
