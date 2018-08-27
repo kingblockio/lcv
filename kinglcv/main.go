@@ -7,35 +7,21 @@ import (
 	"github.com/tendermint/tendermint/libs/cli"
 )
 
-// rootCmd is the entry point for this binary
-var (
-	rootCmd = &cobra.Command{
-		Use:   "lcv",
-		Short: "lcv test",
-	}
-)
-
 func todoTest(_ *cobra.Command, _ []string) error {
 	return errors.New("todo: Command not yet implemented")
 }
 
-func initTestCommand() *cobra.Command {
-	cmd := &cobra.Command{
+
+func main() {
+	
+	rootCmd = &cobra.Command{
 		Use:   "start",
 		Short: "start test light client",
 		RunE:  todoTest,
 	}
-	return cmd
-}
-
-func main() {
+		
 	// disable sorting
 	cobra.EnableCommandSorting = false
-
-	// add proxy, version and key info
-	rootCmd.AddCommand(
-		initTestCommand(),
-	)
 
 	// prepare and add flags
 	executor := cli.PrepareMainCmd(rootCmd, "BC", os.ExpandEnv("$HOME/.kinglcv"))
