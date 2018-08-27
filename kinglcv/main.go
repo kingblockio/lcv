@@ -14,7 +14,7 @@ func todoTest(_ *cobra.Command, _ []string) error {
 
 func main() {
 	
-	rootCmd = &cobra.Command{
+	rootCmd := &cobra.Command{
 		Use:   "start",
 		Short: "start test light client",
 		RunE:  todoTest,
