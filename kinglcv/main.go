@@ -8,6 +8,25 @@ import (
 )
 
 func todoTest(_ *cobra.Command, _ []string) error {
+	
+	//
+	registerGenesis := "/root/myspace/src/github.com/kingblockio/lcv/kinglcv/genesis.json"
+	
+	
+	//
+	genesisBytes, err := ioutil.ReadFile(registerGenesis)
+	if err != nil {
+		return errors.Errorf("Error reading genesis file %v: %v\n", registerGenesis, err)
+	}
+	
+	//
+	chainGenDoc := new(tm.GenesisDoc)
+	err = json.Unmarshal(genesisBytes, chainGenDoc)
+	if err != nil {
+		return errors.Errorf("Genesis doc couldn't be parsed: %v\n", err)
+	}
+	
+	//
 	return errors.New("todo: Command not yet implemented")
 }
 
