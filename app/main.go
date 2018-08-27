@@ -14,10 +14,23 @@ import (
 // rootCmd is the entry point for this binary
 var (
 	rootCmd = &cobra.Command{
-		Use:   "relay",
-		Short: "king chain and hub communication relay",
+		Use:   "lcv",
+		Short: "lcv test",
 	}
 )
+
+func todoTest(_ *cobra.Command, _ []string) error {
+	return errors.New("todo: Command not yet implemented")
+}
+
+func initTestCommand() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:   "start",
+		Short: "start test light client",
+		RunE:  todoTest,
+	}
+	return cmd
+}
 
 func main() {
 	// disable sorting
@@ -26,24 +39,13 @@ func main() {
 	// get the codec
 	cdc := app.MakeCodec()
 
-	// TODO: Setup keybase, viper object, etc. to be passed into
-	// the below functions and eliminate global vars, like we do
-	// with the cdc.
-
-
-	rootCmd.AddCommand(
-		client.PostCommands(
-			ibccmd.IBCRelayCmd(cdc),
-		)...)
-
 	// add proxy, version and key info
 	rootCmd.AddCommand(
-		client.LineBreak,
-		version.VersionCmd,
+		initTestCommand(),
 	)
 
 	// prepare and add flags
-	executor := cli.PrepareMainCmd(rootCmd, "BC", os.ExpandEnv("$HOME/.kingrelay"))
+	executor := cli.PrepareMainCmd(rootCmd, "BC", os.ExpandEnv("$HOME/.kinglcv"))
 	err := executor.Execute()
 	if err != nil {
 		// Note: Handle with #870
