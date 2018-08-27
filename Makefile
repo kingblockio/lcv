@@ -55,7 +55,7 @@ install: check-ledger
 	go install $(BUILD_FLAGS) ./cmd/gaia/cmd/gaiacli
 
 install_lcv:
-	go install $(BUILD_FLAGS) ./app/
+	go install $(BUILD_FLAGS) ./test/
 
 install_debug:
 	go install $(BUILD_FLAGS) ./cmd/gaia/cmd/gaiadebug
