@@ -2,9 +2,13 @@ package main
 
 import (
 	"os"
+	"io/ioutil"
+	"encoding/json"
+	
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 	"github.com/tendermint/tendermint/libs/cli"
+	tm "github.com/tendermint/tendermint/types"
 )
 
 func todoTest(_ *cobra.Command, _ []string) error {
