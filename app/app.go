@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 
 	bam "github.com/cosmos/cosmos-sdk/baseapp"
-	"github.com/kingblockio/relay/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/wire"
 	"github.com/cosmos/cosmos-sdk/x/auth"

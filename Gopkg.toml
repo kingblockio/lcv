@@ -27,7 +27,6 @@
 [[constraint]]
   name = "github.com/cosmos/cosmos-sdk"
   source = "https://github.com/kingblockio/cosmos-sdk.git"
-  version = "=kingblockv1"
 
 [[constraint]]
   name = "github.com/bgentry/speakeasy"
